@@ -24,7 +24,7 @@ public class ResultSceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _highlyRatedText.text = "çÇï]âø   " + _highlyRatedScore.ToString();
-        _lowRatingText.text = "í·ï]âø   " + _lowRatingScore.ToString();
+        _highlyRatedText.text = _highlyRatedScore.ToString();
+        _lowRatingText.text = _lowRatingScore.ToString();
     }
 }
