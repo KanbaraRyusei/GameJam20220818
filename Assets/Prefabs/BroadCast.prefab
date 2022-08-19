@@ -113,6 +113,7 @@ MonoBehaviour:
   _paramDoBlink: DoBlink
   _paramIsMouseOpen: IsMouseOpen
   _paramDoReceivedHate: DoReceivedHate
+  _paramIsFired: IsFired
   _eyeBrowRatio: 0.2
   _switchMouseRatio: 0.4
   _animationDelay: 1

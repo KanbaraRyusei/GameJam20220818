@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 public class YoutubersAnimatiorUtility : MonoBehaviour
@@ -17,6 +18,9 @@ public class YoutubersAnimatiorUtility : MonoBehaviour
 
     [SerializeField, Tooltip("Animatorのパラメーター名 : アンチコメント通過")]
     string _paramDoReceivedHate = "DoReceivedHate";
+
+    [SerializeField, Tooltip("Animatorのパラメーター名 : 炎上中")]
+    string _paramIsFired = "IsFired";
 
     /// <summary>true : アンチコメントを受け取った</summary>
     bool _isReceiveHate = false;
@@ -52,6 +56,8 @@ public class YoutubersAnimatiorUtility : MonoBehaviour
 
     void Update()
     {
+        _animator.SetBool(_paramIsFired, TimeManager.Instance.IsFireTime);
+
         if (_isReceiveHate)
         {
             _animator.SetTrigger(_paramDoReceivedHate);
