@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyPosition: -110
   _lastPosition: {fileID: 4564819671828822941}
-  _anticoment: 0
+  _anticoment: 1
   _score: 0
   _se: {fileID: 8300000, guid: c8170755443b888449672440cdca99a2, type: 3}
 --- !u!1 &2426913587431360937

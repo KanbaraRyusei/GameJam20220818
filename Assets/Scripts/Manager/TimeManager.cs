@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.Events;
 
 public class TimeManager : SingletonMonoBehaviour<TimeManager>
 {
@@ -28,8 +29,12 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     private float _secondFireTime = 60f;
 
     [SerializeField]
-    [Header("リザルト画面のシーン名")]
-    private string _resultSceneName;
+    [Header("ハッピーエンドリザルト画面のシーン名")]
+    private string _happyResultSceneName;
+
+    [SerializeField]
+    [Header("バッドエンドリザルト画面のシーン名")]
+    private string _badResultSceneName;
 
     [SerializeField]
     private int _damageThreshold = 5;
@@ -52,6 +57,9 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     [SerializeField]
     private float _secondBeforFireTime = 58f;
 
+    [SerializeField]
+    UnityEvent RecieveHateEvent;
+
     private bool _wasBeforSecondFireTime;
     private bool _wasBeforFirstFireTime;
     private int _damageNum = 0;
@@ -60,13 +68,14 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     private bool _isFireTime = false;
     private bool _wasFirstFireTime = false;
     private bool _wasSecondFireTime = false;
+    private float _firstGameOverTime;
 
     protected override void Awake()
     {
         base.Awake();
+        _firstGameOverTime = _gameOverTime;
         GameManager.OnGameStart += TimerStart;
         GameManager.OnGameStart += () => _beforPanel.SetActive(false);
-        GameManager.OnGameOver += () => SceneChanger.GoToOtherScene(_resultSceneName);
     }
 
     private void Update()
@@ -75,6 +84,14 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
         if(_timer > _gameOverTime)
         {
             _isTimerStop = true;
+            if(_gameOverTime == _firstGameOverTime)
+            {
+                GameManager.OnGameOver += () => SceneChanger.GoToOtherScene(_happyResultSceneName);
+            }
+            else
+            {
+                GameManager.OnGameOver += () => SceneChanger.GoToOtherScene(_badResultSceneName);
+            }
             GameManager.GameOver();
             Debug.Log("Over");
         }
@@ -89,10 +106,14 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     public void OnDamage()
     {
         _damageNum++;
+        if(!IsFireTime)
+        {
+            RecieveHateEvent?.Invoke();
+        }
         if (_damageNum >= _damageThreshold)
         {
             DecreaseGameOverTime(_time);
-            Debug.Log(TimeManager.Instance.GameOverTime);
+            Debug.Log(GameOverTime);
             _damageNum = 0;
         }
     }
