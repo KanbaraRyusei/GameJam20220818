@@ -19,6 +19,7 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     public void PlayBGM(AudioClip clip)
     {
+        _audioBGM.Stop();
         _audioBGM.PlayOneShot(clip);
     }
 

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/click.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: cc536ab40675c564aace5f00efe5f687
+    path: Assets/Scenes/BadResultScene.unity
+    guid: d5a5f5e976233ff4fbd562c16aaeed44
+  - enabled: 1
+    path: Assets/Scenes/GoodResultScene.unity
+    guid: 1e0d698acd77bfe45a0cbc8910dc8a82
   m_configObjects: {}

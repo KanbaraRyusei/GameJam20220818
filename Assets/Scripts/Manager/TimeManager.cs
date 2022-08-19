@@ -13,7 +13,7 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
 
     [SerializeField]
     [Header("プレイ時間の初期値")]
-    private float _gameOverTime = 90;
+    private float _gameOverTime = 90f;
 
     [SerializeField]
     [Header("炎上タイムの長さ(ミリ秒)")]
@@ -21,16 +21,40 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
 
     [SerializeField]
     [Header("最初の炎上タイム")]
-    private float _firstFireTime = 30;
+    private float _firstFireTime = 30f;
 
     [SerializeField]
     [Header("2番目の炎上タイム")]
-    private float _secondFireTime = 60;
+    private float _secondFireTime = 60f;
 
     [SerializeField]
     [Header("リザルト画面のシーン名")]
     private string _resultSceneName;
 
+    [SerializeField]
+    private int _damageThreshold = 5;
+
+    [SerializeField]
+    private float _time = 5f;
+
+    [SerializeField]
+    private AudioClip _fireBGM;
+
+    [SerializeField]
+    private AudioClip _playBGM;
+
+    [SerializeField]
+    private GameObject _beforPanel;
+
+    [SerializeField]
+    private float _firstBeforFireTime = 28f;
+
+    [SerializeField]
+    private float _secondBeforFireTime = 58f;
+
+    private bool _wasBeforSecondFireTime;
+    private bool _wasBeforFirstFireTime;
+    private int _damageNum = 0;
     private float _timer;
     private bool _isTimerStop = true;
     private bool _isFireTime = false;
@@ -41,6 +65,7 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     {
         base.Awake();
         GameManager.OnGameStart += TimerStart;
+        GameManager.OnGameStart += () => _beforPanel.SetActive(false);
         GameManager.OnGameOver += () => SceneChanger.GoToOtherScene(_resultSceneName);
     }
 
@@ -51,12 +76,34 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
         {
             _isTimerStop = true;
             GameManager.GameOver();
+            Debug.Log("Over");
         }
-        if(!_isFireTime)
+        BeforFireCheck();
+        if (!_isFireTime)
         {
             FireTimeCheck();
         }
         _timer += Time.deltaTime;
+    }
+
+    public void OnDamage()
+    {
+        _damageNum++;
+        if (_damageNum >= _damageThreshold)
+        {
+            DecreaseGameOverTime(_time);
+            Debug.Log(TimeManager.Instance.GameOverTime);
+            _damageNum = 0;
+        }
+    }
+
+    /// <summary>
+    /// プレイ時間を減らす関数
+    /// </summary>
+    /// <param name="num"></param>
+    private void DecreaseGameOverTime(float num)
+    {
+        _gameOverTime -= num;
     }
 
     private void TimerStart()
@@ -65,13 +112,25 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
         _isTimerStop = false;
     }
 
-    /// <summary>
-    /// プレイ時間を減らす関数
-    /// </summary>
-    /// <param name="num"></param>
-    public void DecreaseGameOverTime(float num)
+    private void BeforFireCheck()
     {
-        _gameOverTime -= num;
+        if (_wasBeforSecondFireTime) return;
+        if(_timer > _secondBeforFireTime)
+        {
+            BeforFireTime();
+            _wasBeforSecondFireTime = true;
+        }
+        if (_wasBeforFirstFireTime) return;
+        if(_timer >_firstBeforFireTime)
+        {
+            BeforFireTime();
+            _wasBeforFirstFireTime = true;
+        }
+    }
+
+    private void BeforFireTime()
+    {
+        _beforPanel.SetActive(true);
     }
 
     private void FireTimeCheck()
@@ -94,8 +153,13 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
 
     private async void FireTime()
     {
+        _beforPanel.SetActive(false);
+        Debug.Log("Fire");
+        SoundManager.Instance.PlayBGM(_fireBGM);
         _isFireTime = true;
         await Task.Delay(_fireTimeLength);
+        SoundManager.Instance.PlayBGM(_playBGM);
         _isFireTime = false;
     }
+
 }
