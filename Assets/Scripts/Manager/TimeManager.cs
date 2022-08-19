@@ -41,7 +41,7 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     {
         base.Awake();
         GameManager.OnGameStart += TimerStart;
-        GameManager.OnGameOver += () => SceneChanger.Instance.GoToOtherScene(_resultSceneName);
+        GameManager.OnGameOver += () => SceneChanger.GoToOtherScene(_resultSceneName);
     }
 
     private void Update()
