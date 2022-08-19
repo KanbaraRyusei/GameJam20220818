@@ -18,6 +18,12 @@ public class SceneChanger : MonoBehaviour
 
     [SerializeField, Tooltip("別のシーンから飛んできた時にかける暗転復帰メソッド")]
     UnityEvent FadeOut = null;
+
+    /// <summary>シーン遷移に遅延をかけて実行するコルーチンを指定</summary>
+    static System.Func<IEnumerator, Coroutine> StartSceneChangeCoroutine = null;
+
+    /// <summary>シーン遷移に遅延をかけて実行するコルーチンを指定</summary>
+    static System.Func<string, IEnumerator> DelaySceneChange = null;
     #endregion
 
     #region プロパティ
@@ -47,6 +53,8 @@ public class SceneChanger : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             SceneManager.activeSceneChanged += ComeFromOtherScene;
+            StartSceneChangeCoroutine = StartCoroutine;
+            DelaySceneChange = DelaySceneChangeInstance;
         }
     }
 
@@ -58,14 +66,14 @@ public class SceneChanger : MonoBehaviour
 
     /// <summary>別のシーンへ移行する時に実施するメソッド</summary>
     /// <param name="sceneName">移行先シーン名</param>
-    public void GoToOtherScene(string sceneName)
+    static public void GoToOtherScene(string sceneName)
     {
-        StartCoroutine(DelaySceneChange(sceneName));
+        StartSceneChangeCoroutine(DelaySceneChange(sceneName));
     }
 
-    /// <summary>シーン遷移に遅延をかけて実行するコルーチン</summary>
+    /// <summary>シーン遷移に遅延をかけて実行するインスタンス用コルーチン</summary>
     /// <param name="sceneName">遷移先シーン名</param>
-    IEnumerator DelaySceneChange(string sceneName)
+    IEnumerator DelaySceneChangeInstance(string sceneName)
     {
         FadeIn?.Invoke();
         yield return new WaitForSeconds(_SceneChangeDelay);
