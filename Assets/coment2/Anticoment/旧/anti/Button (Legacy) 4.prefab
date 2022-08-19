@@ -33,8 +33,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.55, y: -31.242}
-  m_SizeDelta: {x: 66.8723, y: 100}
+  m_AnchoredPosition: {x: 148.43, y: -31.242}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: -0.31376368, y: 0.18353623}
 --- !u!1 &1971233034420777248
 GameObject:
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 2953096369570111098}
   - component: {fileID: 2953096369570111099}
   m_Layer: 5
-  m_Name: Button (Legacy) 1
+  m_Name: Button (Legacy) 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 588.1504, y: 297}
-  m_SizeDelta: {x: 297.0693, y: 100.809}
+  m_AnchoredPosition: {x: 581.4253, y: 288.98962}
+  m_SizeDelta: {x: 262.699, y: 116.8298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1425964472551099375
 CanvasRenderer:
@@ -282,4 +282,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u6C0F\u306D"
+  m_Text: "\u30AB\u30B9"

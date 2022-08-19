@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 148.43, y: -31.242}
+  m_AnchoredPosition: {x: 198, y: -32.051}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: -0.31376368, y: 0.18353623}
 --- !u!1 &1971233034420777248
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 2953096369570111098}
   - component: {fileID: 2953096369570111099}
   m_Layer: 5
-  m_Name: Button (Legacy) 4
+  m_Name: Button (Legacy) 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 582.92725, y: 297}
-  m_SizeDelta: {x: 265.7029, y: 100.809}
+  m_AnchoredPosition: {x: 294.53467, y: 281.74005}
+  m_SizeDelta: {x: 442.3148, y: 131.3288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1425964472551099375
 CanvasRenderer:
@@ -282,4 +282,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u30AB\u30B9"
+  m_Text: "\u304A\u524D\u5ACC\u3044"

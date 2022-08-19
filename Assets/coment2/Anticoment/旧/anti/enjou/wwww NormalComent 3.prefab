@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -31.242}
+  m_AnchoredPosition: {x: 157, y: -31.646}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: -0.31376368, y: 0.18353623}
 --- !u!1 &1971233034420777248
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 2953096369570111098}
   - component: {fileID: 2953096369570111099}
   m_Layer: 5
-  m_Name: Button (Legacy) 10
+  m_Name: wwww NormalComent 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 483.27637, y: 297}
-  m_SizeDelta: {x: 334.6923, y: 100.809}
+  m_AnchoredPosition: {x: 506.0786, y: 299.53583}
+  m_SizeDelta: {x: 430.5732, y: 128.7538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1425964472551099375
 CanvasRenderer:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SpeedX: 100
-  _score: 100
+  _score: -100
 --- !u!114 &2953096369570111099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _destroyPosition: -110
   _lastPosition: {fileID: 4564819671828822941}
-  _anticoment: 1
+  _anticoment: 0
   _score: 200
 --- !u!1 &2426913587431360937
 GameObject:
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5849056, g: 0.36843106, b: 0.17326447, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -282,4 +282,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u3046\u3007\u3053"
+  m_Text: "\uFF57\uFF57\uFF57\uFF57"
