@@ -27,6 +27,10 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     [Header("2番目の炎上タイム")]
     private float _secondFireTime = 60;
 
+    [SerializeField]
+    [Header("リザルト画面のシーン名")]
+    private string _resultSceneName;
+
     private float _timer;
     private bool _isTimerStop = true;
     private bool _isFireTime = false;
@@ -36,10 +40,8 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
     protected override void Awake()
     {
         base.Awake();
-        _timer = 0;
-        ScoreManager.Init();
-        GameManager.GameStart();
-        TimerStart();
+        GameManager.OnGameStart += TimerStart;
+        GameManager.OnGameOver += () => SceneChanger.Instance.GoToOtherScene(_resultSceneName);
     }
 
     private void Update()
@@ -59,6 +61,7 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
 
     private void TimerStart()
     {
+        _timer = 0;
         _isTimerStop = false;
     }
 
