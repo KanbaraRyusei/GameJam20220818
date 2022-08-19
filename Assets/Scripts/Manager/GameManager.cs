@@ -18,10 +18,12 @@ public static class GameManager
     public static void GameStart()
     {
         OnGameStart?.Invoke();
+        OnGameStart = null;
     }
 
     public static void GameOver()
     {
         OnGameOver?.Invoke();
+        OnGameOver = null;
     }
 }
