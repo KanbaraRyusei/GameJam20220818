@@ -29,6 +29,6 @@ public class AntiComentContoller : MonoBehaviour
 
     public void OnClick()
     {
-        ScoreManager.AddHighlyRated(_score);
+        Destroy(gameObject);
     }
 }
