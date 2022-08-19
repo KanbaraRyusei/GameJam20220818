@@ -75,7 +75,7 @@ public class TimeManager : SingletonMonoBehaviour<TimeManager>
         base.Awake();
         _firstGameOverTime = _gameOverTime;
         GameManager.OnGameStart += TimerStart;
-        GameManager.OnGameStart += () => _beforPanel.SetActive(false);
+        //GameManager.OnGameStart += () => _beforPanel.SetActive(false);
     }
 
     private void Update()
