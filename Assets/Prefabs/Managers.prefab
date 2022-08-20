@@ -51,7 +51,8 @@ MonoBehaviour:
   _fireTimeLength: 15000
   _firstFireTime: 30
   _secondFireTime: 60
-  _resultSceneName: Result
+  _happyResultSceneName: 
+  _badResultSceneName: 
   _damageThreshold: 5
   _time: 5
   _fireBGM: {fileID: 8300000, guid: 40f5aa7999be28c47a61ce1f32bacd4c, type: 3}
@@ -59,6 +60,9 @@ MonoBehaviour:
   _beforPanel: {fileID: 0}
   _firstBeforFireTime: 28
   _secondBeforFireTime: 58
+  RecieveHateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &72417651
 MonoBehaviour:
   m_ObjectHideFlags: 0
