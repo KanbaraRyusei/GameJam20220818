@@ -20,7 +20,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     public void PlayBGM(AudioClip clip)
     {
         _audioBGM.Stop();
-        _audioBGM.PlayOneShot(clip);
+        _audioBGM.clip = clip;
+        _audioBGM.Play();
     }
 
     public void PlaySE(AudioClip clip)
